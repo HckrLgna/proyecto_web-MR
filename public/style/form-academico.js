@@ -1,6 +1,6 @@
 const formulario = document.getElementById('formulario');
 const inputs = document.querySelectorAll('#formulario input');
-const textArea = document.getElementById('situacion');
+const textArea = document.getElementById('desempeño');
 
 textArea.addEventListener("keyup", e => {
     var height = e.target.scrollHeight;
@@ -10,22 +10,28 @@ textArea.addEventListener("keyup", e => {
 
 
 const expresiones = {
-	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-    situacion: /^[a-zA-ZÀ-ÿ\s]{1,250}$/, // Letras y espacios, pueden llevar acentos.
+	nombre_colegio: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+    direccion_colegio: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+    desempeño: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
 }
 
 const campos = {
-	nombre: false,
-    situacion: false
+	nombre_colegio: false,
+	direccion_colegio: false,
+	desempeño: false,
+    grado_escolar: false,
 }
 
 const validarFormulario = (e) => {
 	switch (e.target.name) {
-		case "nombre":
-			validarCampo(expresiones.nombre, e.target, 'nombre');
+		case "nombre_colegio":
+			validarCampo(expresiones.nombre, e.target, 'nombre_colegio');
 		break;
-        case "situacion":
-			validarCampo(expresiones.nombre, e.target, 'situacion');
+		case "direccion_colegio":
+			validarCampo(expresiones.correo, e.target, 'direccion_colegio');
+		break;
+		case "desempeño":
+			validarCampo(expresiones.ci, e.target, 'desempeño');
 		break;
 	}
 }
@@ -49,6 +55,31 @@ const validarCampo = (expresion, input, campo) => {
 	}
 }
 
+const validarGrado = () => {
+	console.log("Validando...");
+	var grado = document.getElementById("grado_escolar");
+	console.log(rol);
+	if(grado.value === 0 || grado.value === "") {
+		campos['grado_escolar'] = false;
+
+	} else {
+		campos['grado_escolar'] = true;
+	}
+	console.log(campos.grado_escolar);
+}
+
+const validarBeneficiario = () => {
+	console.log("Validando...");
+	var beneficiario = document.getElementById("beneficiarios");
+	console.log(rol);
+	if(beneficiario.value === 0 || beneficiario.value === "") {
+		campos['beneficiario'] = false;
+
+	} else {
+		campos['beneficiario'] = true;
+	}
+	console.log(campos.beneficiario);
+}
 
 inputs.forEach((input) => {
 	input.addEventListener('keyup', validarFormulario);
@@ -57,9 +88,10 @@ inputs.forEach((input) => {
 
 formulario.addEventListener('submit', (e) => {
 	e.preventDefault();
-	validarRol()
+	validarGrado();
+	validarBeneficiario();
 	const terminos = document.getElementById('terminos');
-	if(campos.nombre && campos.situacion){
+	if(campos.nombre_colegio && campos.desempeño && campos.desempeño && campos.grado_escolar && campos.beneficiario){
 		formulario.reset();
 
 		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');

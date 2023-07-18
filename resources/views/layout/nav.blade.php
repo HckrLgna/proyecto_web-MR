@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title> miRancho </title>
-    <link rel="stylesheet" href="/mi-rancho-front/css/style.css">
-    <link rel="stylesheet" href="/mi-rancho-front/css/light.css" id="theme">
+    <link rel="stylesheet" href="{{ asset('style/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('style/light.css') }}" id="theme">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
@@ -21,7 +21,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<link rel="stylesheet" href="/mi-rancho-front/css/form-style.css">
 <div class="sidebar close">
     <div class="logo-details">
         <i class='bx bx-buildings' id="logo"></i>
@@ -137,7 +136,7 @@
         <li>
             <div class="profile-details">
                 <div class="profile-content">
-                    <img src="/mi-rancho-front/assets/img/profile.jpg" alt="profileImg">
+                    <img src="{{ asset('style/profile.jpg') }}" alt="profileImg">
                 </div>
                 <div class="name-job">
                     <div class="profile_name">Steven</div>
@@ -153,80 +152,16 @@
 <section class="home-section">
 
     @yield('home-content')
-    <div class="home-content">
-        <i class='bx bx-menu'></i>
-        <span class="text">Usuarios</span>
-    </div>
-
-    <!--    CONTENT    -->
-    <table class="table table-striped" id="usuarios" data-bs-theme="light">
-        <thead class="thead-inverse">
-        <tr>
-            <th>Nombre</th>
-            <th>CI</th>
-            <th>Rol</th>
-            <th>Opciones</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td scope="row">Irren Ma</td>
-            <td>7894561</td>
-            <td>Educador</td>
-            <td>
-                <a name="" id="" class="btn btn-info" href="#" role="button">
-                    <i class='bx bx-id-card'></i>
-                </a>
-                <a name="" id="" class="btn btn-primary" href="#" role="button">
-                    <i class='bx bx-message-square-edit'></i>
-                </a>
-                <a name="" id="" class="btn btn-danger" href="#" role="button">
-                    <i class='bx bx-message-square-x'></i>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td scope="row">Selena Limon</td>
-            <td>7894561</td>
-            <td>Educador</td>
-            <td>
-                <a name="" id="" class="btn btn-info" href="#" role="button">
-                    <i class='bx bx-id-card'></i>
-                </a>
-                <a name="" id="" class="btn btn-primary" href="#" role="button">
-                    <i class='bx bx-message-square-edit'></i>
-                </a>
-                <a name="" id="" class="btn btn-danger" href="#" role="button">
-                    <i class='bx bx-message-square-x'></i>
-                </a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
 
 
 </section>
 
 @yield('js-content')
-<!-- DATATABLE -->
-<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-        crossorigin="anonymous"></script>
 
 
 <script src="{{ asset('/style/script.js') }}"></script>
 
-<script>
-    new DataTable('#usuarios', {
-        responsive: true,
-        autoWidth: false,
-    });
+
 
 </script>
 
