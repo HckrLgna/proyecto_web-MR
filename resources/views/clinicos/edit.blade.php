@@ -32,9 +32,9 @@
 
         <!-- Grupo: Grado Motivo -->
         <div class="formulario__grupo" id="grupo__grado">
-            <label for="grado_escolar" class="formulario__label">Motivo</label>
+            <label for="especialidad" class="formulario__label">Especialidad</label>
             <div class="formulario__grupo-input">
-                <select class="formulario__input" name="grado_escolar" id="grado_escolar">
+                <select class="formulario__input" name="especialidad" id="especialidad">
                     <option value="0" selected>Seleccionar un motivo</option>
                     <option value="1">Primaria: 1</option>
                     <option value="2">Primaria: 2</option>

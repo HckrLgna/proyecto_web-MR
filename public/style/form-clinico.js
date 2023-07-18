@@ -36,21 +36,22 @@ const campos = {
 	prescripcion: false,
     observaciones: false,
     beneficiario: false,
+    especialidad: false,
 }
 
 const validarFormulario = (e) => {
 	switch (e.target.name) {
 		case "nombre_doctor":
-			validarCampo(expresiones.nombre, e.target, 'nombre_doctor');
+			validarCampo(expresiones.nombre_doctor, e.target, 'nombre_doctor');
 		break;
 		case "motivo":
-			validarCampo(expresiones.correo, e.target, 'motivo');
+			validarCampo(expresiones.motivo, e.target, 'motivo');
 		break;
 		case "prescripcion":
-			validarCampo(expresiones.ci, e.target, 'prescripcion');
+			validarCampo(expresiones.prescripcion, e.target, 'prescripcion');
 		break;
         case "observaciones":
-			validarCampo(expresiones.ci, e.target, 'observaciones');
+			validarCampo(expresiones.observaciones, e.target, 'observaciones');
 		break;
 	}
 }
@@ -95,11 +96,11 @@ const validarPassword2 = () => {
 	}
 }
 
-const validarGrado = () => {
+const validarEspecialidad = () => {
 	console.log("Validando...");
-	var grado = document.getElementById("grado_escolar");
-	console.log(rol);
-	if(grado.value == 0 || grado.value == "") {
+	var especialidad = document.getElementById("especialidad");
+	console.log(especialidad.value);
+	if(especialidad.value == 0 || especialidad.value == "") {
 		campos['grado_escolar'] = false;
 
 	} else {
@@ -110,8 +111,8 @@ const validarGrado = () => {
 
 const validarBeneficiario = () => {
 	console.log("Validando...");
-	var beneficiario = document.getElementById("beneficiarios");
-	console.log(rol);
+	var beneficiario = document.getElementById("beneficiario");
+	console.log(beneficiario);
 	if(beneficiario.value == 0 || beneficiario.value == "") {
 		campos['beneficiario'] = false;
 
@@ -128,21 +129,20 @@ inputs.forEach((input) => {
 
 formulario.addEventListener('submit', (e) => {
 	e.preventDefault();
-	validarGrado();
+    validarEspecialidad();
     validarBeneficiario();
-	const terminos = document.getElementById('terminos');
-	if(campos.nombre_doctor && campos.motivo && campos.prescripcion && campos.observaciones && campos.beneficiario){
-		formulario.reset();
+    if(campos.nombre_doctor && campos.motivo && campos.prescripcion && campos.observaciones ){
+        formulario.reset();
 
-		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
-		setTimeout(() => {
-			document.getElementById('formulario__mensaje-exito').classList.remove('formulario__mensaje-exito-activo');
-		}, 5000);
+        document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
+        setTimeout(() => {
+            document.getElementById('formulario__mensaje-exito').classList.remove('formulario__mensaje-exito-activo');
+        }, 5000);
 
-		document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
-			icono.classList.remove('formulario__grupo-correcto');
-		});
-	} else {
-		document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
-	}
+        document.querySelectorAll('.formulario__grupo-correcto').forEach((icono) => {
+            icono.classList.remove('formulario__grupo-correcto');
+        });
+    } else {
+        document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
+    }
 });

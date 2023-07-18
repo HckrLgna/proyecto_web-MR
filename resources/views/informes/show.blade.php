@@ -2,6 +2,7 @@
 
 @section('css-content')
 
+    <link rel="stylesheet" href="{{ asset('/style/form-style.css') }}">
 
 @endsection
 
@@ -17,6 +18,8 @@
 
     <div class="card text-center" data-bs-theme="light">
         <div class="card-body">
+
+            <!-- Beneficiario -->
             <h2 class="formulario__label card-title">Jaimito</h2>
 
 
@@ -25,29 +28,17 @@
 
 
 
-                <!-- Grupo: Grado Escolar -->
+                <!-- Grupo: Evaluacion -->
                 <div class="formulario__grupo" id="grupo__grado">
-                    <h5 for="grado_escolar" class="formulario__label">Grado Escolar</h5>
-
+                    <h5 class="formulario__label">Evaluación</h5>
+                    <h6>Info</h6>
                 </div>
 
-                <!-- Grupo: Nombre Colegio -->
+                <!-- Grupo: Descripcion -->
                 <div class="formulario__grupo" id="grupo__nombre_colegio">
-                    <h5 for="nombre_colegio" class="formulario__label">Nombre Colegio</h5>
+                    <h5 class="formulario__label">Descripción</h5>
+                    <h6>Info</h6>
                 </div>
-
-                <!-- Grupo: Direccion Colegio -->
-                <div class="formulario__grupo" id="grupo__direccion_colegio">
-                    <h5 for="direccion_colegio" class="formulario__label">Dirección Colegio</h5>
-                </div>
-
-
-
-                <!-- Grupo: Desempeño -->
-                <div class="formulario__grupo" id="grupo__desempeño">
-                    <h5 for="desempeño" class="formulario__label">Desempeño</h5>
-                </div>
-
 
             </div>
         </div>
