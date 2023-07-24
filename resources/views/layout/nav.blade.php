@@ -37,8 +37,8 @@
             </div>
             <ul class="sub-menu">
                 <li><a class="link_name" href="#">Usuario</a></li>
-                <li><a href="#">Crear</a></li>
-                <li><a href="#">Listar</a></li>
+                <li><a href="{{route('user.create')}}">Crear</a></li>
+                <li><a href="{{route('user.index')}}">Listar</a></li>
             </ul>
         </li>
         <li>

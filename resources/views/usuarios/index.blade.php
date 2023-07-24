@@ -26,37 +26,24 @@
         </thead>
         <tbody>
         <tr>
-            <td scope="row">Irren Ma</td>
-            <td>7894561</td>
-            <td>Educador</td>
-            <td>
-                <a name="" id="" class="btn btn-info" href="#" role="button">
-                    <i class='bx bx-id-card'></i>
-                </a>
-                <a name="" id="" class="btn btn-primary" href="#" role="button">
-                    <i class='bx bx-message-square-edit' ></i>
-                </a>
-                <a name="" id="" class="btn btn-danger" href="#" role="button">
-                    <i class='bx bx-message-square-x' ></i>
-                </a>
-            </td>
+            @foreach($users as $user)
+                <td scope="row">{{$user->fullname}}</td>
+                <td>{{$user->ci}}</td>
+                <td>Educador</td>
+                <td>
+                    <a name="" id="" class="btn btn-info" href="#" role="button">
+                        <i class='bx bx-id-card'></i>
+                    </a>
+                    <a name="" id="" class="btn btn-primary" href="#" role="button">
+                        <i class='bx bx-message-square-edit' ></i>
+                    </a>
+                    <a name="" id="" class="btn btn-danger" href="#" role="button">
+                        <i class='bx bx-message-square-x' ></i>
+                    </a>
+                </td>
+            @endforeach()
         </tr>
-        <tr>
-            <td scope="row">Selena Limon</td>
-            <td>7894561</td>
-            <td>Educador</td>
-            <td>
-                <a name="" id="" class="btn btn-info" href="#" role="button">
-                    <i class='bx bx-id-card'></i>
-                </a>
-                <a name="" id="" class="btn btn-primary" href="#" role="button">
-                    <i class='bx bx-message-square-edit' ></i>
-                </a>
-                <a name="" id="" class="btn btn-danger" href="#" role="button">
-                    <i class='bx bx-message-square-x' ></i>
-                </a>
-            </td>
-        </tr>
+        
         </tbody>
     </table>
 

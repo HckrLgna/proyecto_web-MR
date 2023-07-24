@@ -75,9 +75,10 @@
             <div class="formulario__grupo-input">
                 <select class="formulario__input" name="rol" id="rol">
                     <option value="0" selected>Sin seleccionar</option>
-                    <option value="1">Director</option>
-                    <option value="2">Educador</option>
-                    <option value="3">Beneficiario</option>
+                    @foreach($roles as $role)
+                        <option value="{{$role->id}}">{{$role->nombre}}</option>
+
+                    @endforeach()
                 </select>
             </div>
             <p class="formulario__input-error">El CI solo puede contener numeros.</p>
