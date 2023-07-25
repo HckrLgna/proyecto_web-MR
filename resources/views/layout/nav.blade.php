@@ -69,8 +69,8 @@
             </div>
             <ul class="sub-menu">
                 <li><a class="link_name" href="#">Beneficiario</a></li>
-                <li><a href="#">Crear</a></li>
-                <li><a href="#">Listar</a></li>
+                <li><a href="{{route('beneficiario.create')}}">Crear</a></li>
+                <li><a href="{{route('beneficiario.index')}}">Listar</a></li>
             </ul>
         </li>
         <li>

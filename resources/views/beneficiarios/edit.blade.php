@@ -21,7 +21,7 @@
         <div class="formulario__grupo" id="grupo__nombre">
             <label for="nombre" class="formulario__label">Nombre</label>
             <div class="formulario__grupo-input">
-                <input type="text" class="formulario__input" name="nombre" id="nombre" placeholder="John Doe">
+                <input type="text" class="formulario__input" name="nombre" id="nombre" value="{{$beneficiario->nombre}}">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
             <p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
@@ -31,7 +31,7 @@
         <div class="formulario__grupo" id="grupo__fecha-nacimiento">
             <label for="nacimiento" class="formulario__label">Fecha de nacimiento</label>
             <div class="formulario__grupo-input">
-                <input type="date" class="formulario__input" name="nacimiento" id="nacimiento" placeholder="John Doe">
+                <input type="date" class="formulario__input" name="nacimiento" id="nacimiento" value="{{$beneficiario->fecha_nacimiento}}">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
         </div>
@@ -53,7 +53,7 @@
         <!-- Grupo: Situación -->
         <div class="formulario__grupo" id="grupo__situacion">
             <label for="situacion" class="formulario__label">Situación</label>
-            <textarea class="formulario__text-area" name="situacion" id="situacion" placeholder="Cómo se lo encontró?"></textarea>
+            <textarea class="formulario__text-area" name="situacion" id="situacion" >{{$beneficiario->situacion}}</textarea>
             <p class="formulario__input-error">Rellene correctamente: solo puede contener numeros, letras y guion bajo.</p>
         </div>
 
