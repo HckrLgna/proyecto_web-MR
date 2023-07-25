@@ -25,38 +25,35 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td scope="row">Irren Ma</td>
-            <td>7894561</td>
-            <td>Educador</td>
-            <td>
-                <a name="" id="" class="btn btn-info" href="#" role="button">
-                    <i class='bx bx-id-card'></i>
-                </a>
-                <a name="" id="" class="btn btn-primary" href="#" role="button">
-                    <i class='bx bx-message-square-edit' ></i>
-                </a>
-                <a name="" id="" class="btn btn-danger" href="#" role="button">
-                    <i class='bx bx-message-square-x' ></i>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td scope="row">Selena Limon</td>
-            <td>7894561</td>
-            <td>Educador</td>
-            <td>
-                <a name="" id="" class="btn btn-info" href="#" role="button">
-                    <i class='bx bx-id-card'></i>
-                </a>
-                <a name="" id="" class="btn btn-primary" href="#" role="button">
-                    <i class='bx bx-message-square-edit' ></i>
-                </a>
-                <a name="" id="" class="btn btn-danger" href="#" role="button">
-                    <i class='bx bx-message-square-x' ></i>
-                </a>
-            </td>
-        </tr>
+        @foreach($users as $user)
+            <tr>
+                <td scope="row">{{$user->fullname}}</td>
+                <td>{{$user->ci}}</td>
+                @foreach($roles as $role)
+                    @if($role->id == $user->role_id)
+                        <td>{{$role->nombre}}</td>
+                    @endif
+                @endforeach
+                <td>
+                    <a name="" id="" class="btn btn-info" href="{{route('user.show',$user)}}" role="button">
+                        <i class='bx bx-id-card'></i>
+                    </a>
+                    <a name="" id="" class="btn btn-primary" href="{{route('user.edit',$user)}}" role="button">
+                        <i class='bx bx-message-square-edit' ></i>
+                    </a>
+                    <form action="{{route('user.destroy',$user)}}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <a name="" id="" class="btn btn-danger" type="submit" role="button">
+                            <i class='bx bx-message-square-x' ></i>
+                        </a>
+
+                    </form>
+
+                </td>
+            </tr>
+        @endforeach()
+
         </tbody>
     </table>
 

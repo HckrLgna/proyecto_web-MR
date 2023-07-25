@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -18,7 +19,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'fullname',
+        'ci',
+        'estado',
         'email',
         'password',
     ];
@@ -42,4 +45,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function my_update($request){
+        self::update($request->all());
+    }
+    public function tiempo_permanencia($data_ini){
+        // Convertir la fecha inicial a un objeto Carbon
+        $fechaInicial = Carbon::parse($data_ini);
+
+        // Obtener la diferencia entre la fecha inicial y la fecha actual
+        $intervalo = $fechaInicial->diff(Carbon::now());
+
+        // Obtener los días y horas del intervalo
+        $dias = $intervalo->days;
+        $horas = $intervalo->h;
+
+        return "El tiempo de permanencia es: $dias Días con: $horas Horas.";
+    }
 }

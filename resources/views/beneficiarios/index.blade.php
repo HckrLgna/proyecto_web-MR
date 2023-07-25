@@ -25,38 +25,31 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td scope="row">Jaimito</td>
-            <td>Abandonado</td>
-            <td>12/02/2021</td>
-            <td>
-                <a name="" id="" class="btn btn-info" href="#" role="button">
-                    <i class='bx bx-id-card'></i>
-                </a>
-                <a name="" id="" class="btn btn-primary" href="#" role="button">
-                    <i class='bx bx-message-square-edit' ></i>
-                </a>
-                <a name="" id="" class="btn btn-danger" href="#" role="button">
-                    <i class='bx bx-message-square-x' ></i>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td scope="row">Carlitos</td>
-            <td>Extraviado</td>
-            <td>10/03/2021</td>
-            <td>
-                <a name="" id="" class="btn btn-info" href="#" role="button">
-                    <i class='bx bx-id-card'></i>
-                </a>
-                <a name="" id="" class="btn btn-primary" href="#" role="button">
-                    <i class='bx bx-message-square-edit' ></i>
-                </a>
-                <a name="" id="" class="btn btn-danger" href="#" role="button">
-                    <i class='bx bx-message-square-x' ></i>
-                </a>
-            </td>
-        </tr>
+        @foreach($beneficiarios as $beneficiario)
+            <tr>
+                <td scope="row">{{$beneficiario->nombre}}</td>
+                <td>{{$beneficiario->situacion}}</td>
+                <td>{{$beneficiario->fecha_nacimiento}} </td>
+                <td>
+                    <a name="" id="" class="btn btn-info" href="{{route('beneficiario.show',$beneficiario)}}" role="button">
+                        <i class='bx bx-id-card'></i>
+                    </a>
+                    <a id="" class="btn btn-primary" href="{{route('beneficiario.edit',$beneficiario)}}" role="button">
+                        <i class='bx bx-message-square-edit' ></i>
+                    </a>
+
+                    <a id="" class="btn btn-danger" href="{{route('beneficiario.update',$beneficiario)}}" role="button"
+                        onclick="event.preventDefault(); document.getElementById('update-form').submit();">
+                        <i class='bx bx-message-square-x' ></i>
+                    </a>
+                    <form id="update-form" action="{{ route('beneficiario.update',$beneficiario) }}" method="POST" class="d-none">
+                        @csrf
+                        @method('PUT')
+                    </form>
+                </td>
+            </tr>
+        @endforeach
+
         </tbody>
     </table>
 

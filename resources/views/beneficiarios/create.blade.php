@@ -14,9 +14,8 @@
 
     <!--    CONTENT    -->
 
-    <form action="" class="formulario" id="formulario">
-
-
+    <form action="{{route('beneficiario.store')}}" method="post" class="formulario" id="formulario">
+    @csrf
         <!-- Grupo: Nombre -->
         <div class="formulario__grupo" id="grupo__nombre">
             <label for="nombre" class="formulario__label">Nombre</label>
@@ -31,7 +30,7 @@
         <div class="formulario__grupo" id="grupo__fecha-nacimiento">
             <label for="nacimiento" class="formulario__label">Fecha de nacimiento</label>
             <div class="formulario__grupo-input">
-                <input type="date" class="formulario__input" name="nacimiento" id="nacimiento" placeholder="John Doe">
+                <input type="date" class="formulario__input" name="fecha_nacimiento" id="nacimiento" placeholder="John Doe">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
         </div>
@@ -40,7 +39,7 @@
         <div class="formulario__grupo" id="grupo__grado">
             <label for="grado_escolar" class="formulario__label">Motivo</label>
             <div class="formulario__grupo-input">
-                <select class="formulario__input" name="motivo" id="motivo">
+                <select class="formulario__input" name="situacion" id="motivo">
                     <option value="0" selected>Seleccione el motivo</option>
                     <option value="1">Abandonado</option>
                     <option value="2">Escapó</option>
@@ -69,6 +68,6 @@
 @endsection
 
 @section('js-content')
-    <script src="{{ asset('style/form-beneficiario.js') }}"></script>
+     <!-- script src="{{ asset('style/form-beneficiario.js') }}"></script> -->
 
 @endsection
