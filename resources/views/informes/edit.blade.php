@@ -30,10 +30,23 @@
             </div>
         </div>
 
-        <!-- Grupo: Observaciones -->
-        <div class="formulario__grupo" id="grupo__pbservaciones">
-            <label for="observaciones" class="formulario__label">Observaciones</label>
-            <textarea class="formulario__text-area" name="observaciones" id="observaciones" placeholder="Cómo se lo encontró?"></textarea>
+        <!-- Grupo: Evaluacion -->
+        <div class="formulario__grupo" id="grupo__beneficiario">
+            <label for="evaluacion" class="formulario__label">Evaluación</label>
+            <div class="formulario__grupo-input">
+                <select class="formulario__input" name="evaluacion" id="evaluacion">
+                    <option value="0" selected>Seleccionar evauación</option>
+                    <option value="1">Bueno</option>
+                    <option value="2">Regular</option>
+                    <option value="2">Malo</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Grupo: Descripcion -->
+        <div class="formulario__grupo" id="grupo__descripcion">
+            <label for="descripcion" class="formulario__label">Descripción</label>
+            <textarea class="formulario__text-area" name="descripcion" id="descripcion" placeholder="Redacte su evaluación"></textarea>
             <p class="formulario__input-error">Rellene correctamente; solo puede contener numeros, letras y guion bajo.</p>
         </div>
 
@@ -46,6 +59,7 @@
             <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
         </div>
     </form>
+
 @endsection
 
 @section('js-content')

@@ -1,27 +1,28 @@
 const formulario = document.getElementById('formulario');
 const inputs = document.querySelectorAll('#formulario input');
-const observaciones = document.getElementById('observaciones');
+const descripcion = document.getElementById('descripcion');
 
-observaciones.addEventListener("keyup", e => {
+descripcion.addEventListener("keyup", e => {
     var height = e.target.scrollHeight;
     console.log(height)
-    observaciones.style.height = `${height}px`
+    descripcion.style.height = `${height}px`
 })
 
 
 const expresiones = {
-    observaciones: /^[a-zA-ZÀ-ÿ\s]{1,250}$/, // Letras y espacios, pueden llevar acentos.
+    descripcion: /^[a-zA-ZÀ-ÿ\s]{1,250}$/, // Letras y espacios, pueden llevar acentos.
 }
 
 const campos = {
-    observaciones: false,
+    descripcion: false,
     beneficiario: false,
+    evaluacion: false,
 }
 
 const validarFormulario = (e) => {
 	switch (e.target.name) {
-        case "observaciones":
-			validarCampo(expresiones.ci, e.target, 'observaciones');
+        case "descripcion":
+			validarCampo(expresiones.ci, e.target, 'descripcion');
 		break;
 	}
 }
@@ -47,8 +48,8 @@ const validarCampo = (expresion, input, campo) => {
 
 const validarBeneficiario = () => {
 	console.log("Validando...");
-	var beneficiario = document.getElementById("beneficiarios");
-	console.log(rol);
+	var beneficiario = document.getElementById("beneficiario");
+	console.log(beneficiario.value);
 	if(beneficiario.value == 0 || beneficiario.value == "") {
 		campos['beneficiario'] = false;
 
@@ -58,6 +59,19 @@ const validarBeneficiario = () => {
 	console.log(campos.beneficiario);
 }
 
+const validarEvaluacion = () => {
+    console.log("Validando...");
+    var evaluacion = document.getElementById("evaluacion");
+    console.log(evaluacion.value);
+    if(evaluacion.value == 0 || evaluacion.value == "") {
+        campos['beneficiario'] = false;
+
+    } else {
+        campos['beneficiario'] = true;
+    }
+    console.log(campos.beneficiario);
+}
+
 inputs.forEach((input) => {
 	input.addEventListener('keyup', validarFormulario);
 	input.addEventListener('blur', validarFormulario);
@@ -65,10 +79,10 @@ inputs.forEach((input) => {
 
 formulario.addEventListener('submit', (e) => {
 	e.preventDefault();
-	validarGrado();
+	validarEvaluacion();
     validarBeneficiario();
 	const terminos = document.getElementById('terminos');
-	if(campos.observaciones && campos.beneficiario){
+	if(campos.descripcion && campos.beneficiario && campos.evaluacion){
 		formulario.reset();
 
 		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
