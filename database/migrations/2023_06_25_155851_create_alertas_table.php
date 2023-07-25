@@ -13,18 +13,13 @@ return new class extends Migration
     {
         Schema::create('alertas', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->string('titulo');
             $table->string('fecha');
             $table->string('estado');
             $table->string('detalle');
-            $table->unsignedBigInteger('id_informe_academico');
-            $table->unsignedBigInteger('id_ficha_clinica');
-            $table->unsignedBigInteger('id_ingreso');
-            $table->unsignedBigInteger('id_eduacion_familiar');
-            $table->foreign('id_informe_academico')->references('id')->on('informe_academico')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('id_ficha_clinica')->references('id')->on('ficha_clinica')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('id_ingreso')->references('id')->on('datos_ingreso')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('id_educacion_familiar')->references('id')->on('educacion_familiar')->onUpdate('cascade')->onDelete('cascade');
+            $table->unsignedBigInteger('id_informe_educador');
+
+            $table->foreign('id_informe_educador')->references('id')->on('informe_educador')->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
         });

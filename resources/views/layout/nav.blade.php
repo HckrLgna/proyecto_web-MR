@@ -142,7 +142,16 @@
                     <div class="profile_name">Steven</div>
                     <div class="job">Web Designer</div>
                 </div>
-                <i class='bx bx-log-out'></i>
+                <a  href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                    <i class='bx bx-log-out'></i>
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+
             </div>
         </li>
     </ul>

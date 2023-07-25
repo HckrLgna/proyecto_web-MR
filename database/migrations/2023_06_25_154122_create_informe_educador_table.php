@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('informe_educador', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_usuario');
-            $table->unsignedBigInteger('id_educacion_familiar');
             $table->date('fecha');
+            $table->string('descripcion');
+            $table->unsignedBigInteger('id_usuario');
+            $table->unsignedBigInteger('id_beneficiario');
+
             $table->foreign('id_usuario')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('id_educacion_familiar')->references('id')->on('educacion_familiar')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('id_beneficiario')->references('id')->on('beneficiario')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

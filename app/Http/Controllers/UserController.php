@@ -50,6 +50,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        //TODO: terminar el show
         return view('usuarios.show',[
             'user' => $user,
             'roles' => Role::all()
@@ -72,6 +73,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        //TODO: Arreglar el cambio de contraseña
         $user->my_update($request);
         return redirect()->route('user.show',$user);
     }
