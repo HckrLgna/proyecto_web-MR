@@ -14,14 +14,13 @@
 
     <!--    CONTENT    -->
 
-    <form action="" class="formulario" id="formulario">
-
-
+    <form action=""  class="formulario" id="formulario">
+        @csrf
         <!-- Grupo: Nombre -->
         <div class="formulario__grupo" id="grupo__nombre">
             <label for="nombre" class="formulario__label">Nombre</label>
             <div class="formulario__grupo-input">
-                <input type="text" class="formulario__input" name="nombre" id="nombre" placeholder="John Doe">
+                <input type="text" class="formulario__input" name="nombre" id="nombre"  value="{{$user->fullname}}">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
             <p class="formulario__input-error">El nombre tiene que ser de hasta 40 dígitos y solo puede contener letras.</p>
@@ -31,7 +30,7 @@
         <div class="formulario__grupo" id="grupo__correo">
             <label for="correo" class="formulario__label">Correo Electrónico</label>
             <div class="formulario__grupo-input">
-                <input type="email" class="formulario__input" name="correo" id="correo" placeholder="correo@correo.com">
+                <input type="email" class="formulario__input" name="correo" id="correo"  value="{{$user->email}}">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
             <p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
@@ -63,7 +62,7 @@
         <div class="formulario__grupo" id="grupo__ci">
             <label for="ci" class="formulario__label">CI</label>
             <div class="formulario__grupo-input">
-                <input type="text" class="formulario__input" name="ci" id="ci" placeholder="9216524">
+                <input type="text" class="formulario__input" name="ci" id="ci" value="{{$user->ci}}">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
             <p class="formulario__input-error">El CI solo puede contener numeros.</p>
@@ -74,10 +73,12 @@
             <label for="rol" class="formulario__label">Ocupación</label>
             <div class="formulario__grupo-input">
                 <select class="formulario__input" name="rol" id="rol">
-                    <option value="0" selected>Sin seleccionar</option>
-                    <option value="1">Director</option>
-                    <option value="2">Educador</option>
-                    <option value="3">Beneficiario</option>
+                    @foreach($roles as $role)
+                        @if($role->id == $user->role_id)
+                            <option value="{{$role->id}}" selected>{{$role->nombre}}</option>
+                        @endif
+                            <option value="{{$role->id}}">{{$role->nombre}}</option>
+                    @endforeach
                 </select>
             </div>
             <p class="formulario__input-error">El CI solo puede contener numeros.</p>

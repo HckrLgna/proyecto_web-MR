@@ -14,14 +14,14 @@
 
     <!--    CONTENT    -->
 
-    <form action="" class="formulario" id="formulario">
-
+    <form method="POST" action="{{route('user.store')}}" class="formulario" id="formulario">
+    @csrf
 
         <!-- Grupo: Nombre -->
         <div class="formulario__grupo" id="grupo__nombre">
             <label for="nombre" class="formulario__label">Nombre</label>
             <div class="formulario__grupo-input">
-                <input type="text" class="formulario__input" name="nombre" id="nombre" placeholder="John Doe">
+                <input type="text" class="formulario__input" name="fullname" id="nombre" placeholder="John Doe">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
             <p class="formulario__input-error">El nombre tiene que ser de hasta 40 dígitos y solo puede contener letras.</p>
@@ -31,7 +31,7 @@
         <div class="formulario__grupo" id="grupo__correo">
             <label for="correo" class="formulario__label">Correo Electrónico</label>
             <div class="formulario__grupo-input">
-                <input type="email" class="formulario__input" name="correo" id="correo" placeholder="correo@correo.com">
+                <input type="email" class="formulario__input" name="email" id="correo" placeholder="correo@correo.com">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
             <p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
@@ -73,7 +73,7 @@
         <div class="formulario__grupo" id="grupo__rol">
             <label for="rol" class="formulario__label">Ocupación</label>
             <div class="formulario__grupo-input">
-                <select class="formulario__input" name="rol" id="rol">
+                <select class="formulario__input" name="role_id" id="rol">
                     <option value="0" selected>Sin seleccionar</option>
                     @foreach($roles as $role)
                         <option value="{{$role->id}}">{{$role->nombre}}</option>
@@ -98,6 +98,6 @@
 @endsection
 
 @section('js-content')
-    <script src="{{ asset('style/form-usuario.js') }}"></script>
+
 
 @endsection

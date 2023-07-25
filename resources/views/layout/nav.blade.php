@@ -36,7 +36,7 @@
                 <i class='bx bxs-chevron-down arrow'></i>
             </div>
             <ul class="sub-menu">
-                <li><a class="link_name" href="#">Usuario</a></li>
+                <li><a class="link_name" href="{{route('user.index')}}">Usuario</a></li>
                 <li><a href="{{route('user.create')}}">Crear</a></li>
                 <li><a href="{{route('user.index')}}">Listar</a></li>
             </ul>
