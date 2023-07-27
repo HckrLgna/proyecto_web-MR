@@ -27,38 +27,52 @@
         <span class="logo_name">miRancho</span>
     </div>
     <ul class="nav-links">
-        <li>
-            <div class="iocn-link">
-                <a href="{{route('user.index')}}">
-                    <i class='bx bx-user'></i>
-                    <span class="link_name">Usuario</span>
-                </a>
-                <i class='bx bxs-chevron-down arrow'></i>
-            </div>
-            <ul class="sub-menu">
-                <li><a class="link_name" href="{{route('user.index')}}">Usuario</a></li>
-                <li><a href="{{route('user.create')}}">Crear</a></li>
-                <li><a href="{{route('user.index')}}">Listar</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="#">
-                <i class='bx bx-user'></i>
-                <span class="link_name">Director</span>
-            </a>
-            <ul class="sub-menu blank">
-                <li><a class="link_name" href="#">Director</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="#">
-                <i class='bx bx-group'></i>
-                <span class="link_name">Educador</span>
-            </a>
-            <ul class="sub-menu blank">
-                <li><a class="link_name" href="#">Educador</a></li>
-            </ul>
-        </li>
+        @if( Auth::user()->role_id == 1 )
+            <li>
+                <div class="iocn-link">
+                    <a href="{{route('user.index')}}">
+                        <i class='bx bx-user'></i>
+                        <span class="link_name">Usuario</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="{{route('user.index')}}">Usuario</a></li>
+                    <li><a href="{{route('user.create')}}">Crear</a></li>
+                    <li><a href="{{route('user.index')}}">Listar</a></li>
+                </ul>
+            </li>
+        @endif
+        @if(Auth::user()->role_id ==1 || Auth::user()->role_id == 2)
+                <li>
+                    <a href="#">
+                        <i class='bx bx-user'></i>
+                        <span class="link_name">Director</span>
+                    </a>
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="#">Director</a></li>
+                    </ul>
+                </li>
+        @endif
+
+        @if(Auth::user()->role_id ==1 || Auth::user()->role_id ==3)
+                <li>
+                    <div class="iocn-link">
+                        <a href="{{route('informeEducador.index')}}">
+                            <i class='bx bx-group'></i>
+                            <span class="link_name">Educador</span>
+                        </a>
+                        <i class='bx bxs-chevron-down arrow'></i>
+                    </div>
+
+                    <ul class="sub-menu">
+                        <li><a class="link_name" href="#">Educador</a></li>
+                        <li><a href="{{route('informeEducador.create')}}">Crear informe</a></li>
+                    </ul>
+                </li>
+
+        @endif
+
         <li>
             <div class="iocn-link">
                 <a href="{{route('beneficiario.index')}}">
@@ -115,15 +129,18 @@
                 <li><a href="#">Listar</a></li>
             </ul>
         </li>
-        <li>
-            <a href="#">
-                <i class='bx bx-pie-chart-alt-2'></i>
-                <span class="link_name">Estadísticas</span>
-            </a>
-            <ul class="sub-menu blank">
-                <li><a class="link_name" href="#">Estadísticas</a></li>
-            </ul>
-        </li>
+            @if(Auth::user()->role_id ==1)
+                <li>
+                    <a href="#">
+                        <i class='bx bx-pie-chart-alt-2'></i>
+                        <span class="link_name">Estadísticas</span>
+                    </a>
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="#">Estadísticas</a></li>
+                    </ul>
+                </li>
+            @endif
+
         <li>
             <a href="#" id="btn-change-theme">
                 <i class='fas fa-moon'></i>

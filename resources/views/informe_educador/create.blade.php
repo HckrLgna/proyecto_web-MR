@@ -14,8 +14,8 @@
 
     <!--    CONTENT    -->
 
-    <form action="" class="formulario" id="formulario">
-
+    <form action="{{route('informeEducador.store')}}" method="post" class="formulario" id="formulario">
+    @csrf
         <!-- Grupo: Beneficiario -->
         <div class="formulario__grupo" id="grupo__beneficiario">
             <label for="beneficiario" class="formulario__label">Beneficiario</label>
@@ -23,8 +23,10 @@
                 <select class="formulario__input" name="beneficiario" id="beneficiario">
                     <option value="0" selected>Seleccionar beneficiario</option>
                     <!-- Listar beneficiarios -->
-                    <option value="1">Jaimito</option>
-                    <option value="2">Carlitos</option>
+                    @foreach($beneficiarios as $beneficiario)
+                        <option value="{{$beneficiario->id}}">{{$beneficiario->nombre}}</option>
+                    @endforeach
+
                     <!-- *********************** -->
                 </select>
             </div>
@@ -36,9 +38,9 @@
             <div class="formulario__grupo-input">
                 <select class="formulario__input" name="evaluacion" id="evaluacion">
                     <option value="0" selected>Seleccionar evauación</option>
-                    <option value="1">Bueno</option>
-                    <option value="2">Regular</option>
-                    <option value="2">Malo</option>
+                    <option value="100">Bueno</option>
+                    <option value="50">Regular</option>
+                    <option value="10">Malo</option>
                 </select>
             </div>
         </div>

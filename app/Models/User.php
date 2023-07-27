@@ -54,6 +54,9 @@ class User extends Authenticatable
     public function beneficiarios() :HasMany{
         return $this->hasMany(Beneficiario::class);
     }
+    public function informesEducador():HasMany{
+        return $this->hasMany(InformeEducador::class);
+    }
     public function my_update($request){
         self::update($request->all());
     }

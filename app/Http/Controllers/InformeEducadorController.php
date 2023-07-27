@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Beneficiario;
 use App\Models\InformeEducador;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class InformeEducadorController extends Controller
      */
     public function index()
     {
-        //
+        return view('informe_educador.index');
     }
 
     /**
@@ -20,7 +21,9 @@ class InformeEducadorController extends Controller
      */
     public function create()
     {
-        //
+        return view('informe_educador.create',[
+            'beneficiarios' => Beneficiario::all()
+        ]);
     }
 
     /**
@@ -28,7 +31,9 @@ class InformeEducadorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $informe = new InformeEducador();
+        $informe->
+        dd($request);
     }
 
     /**
@@ -36,7 +41,7 @@ class InformeEducadorController extends Controller
      */
     public function show(InformeEducador $informeEducador)
     {
-        //
+        return view('informe_educador.show',['informeEducador' => $informeEducador]);
     }
 
     /**
@@ -44,7 +49,7 @@ class InformeEducadorController extends Controller
      */
     public function edit(InformeEducador $informeEducador)
     {
-        //
+        return view('informe_educador.edit',['informeEducador', $informeEducador]);
     }
 
     /**
@@ -52,7 +57,7 @@ class InformeEducadorController extends Controller
      */
     public function update(Request $request, InformeEducador $informeEducador)
     {
-        //
+        dd($request);
     }
 
     /**
@@ -60,6 +65,6 @@ class InformeEducadorController extends Controller
      */
     public function destroy(InformeEducador $informeEducador)
     {
-        //
+        dd($informeEducador);
     }
 }

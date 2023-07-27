@@ -16,7 +16,7 @@ return new class extends Migration
             $table->date('fecha_ingreso');
             $table->string('estado');
             $table->unsignedBigInteger('id_beneficiario');
-            $table->foreign('id_beneficiario')->references('id')->on('beneficiario')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('id_beneficiario')->references('id')->on('beneficiarios')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

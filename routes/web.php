@@ -6,6 +6,7 @@ use App\Http\Controllers\InformeAcademicoController;
 use App\Http\Controllers\InformeEducadorController;
 use App\Http\Controllers\FichaClinicaController;
 use App\Http\Controllers\DatosIngresoController;
+use App\Http\Controllers\AlertasController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,6 +20,7 @@ Route::group(['middleware'=> 'auth'],function (){
 
     Route::resource('beneficiario', BeneficiarioController::class);
     Route::post('beneficiario/ingreso', [BeneficiarioController::class, 'ingresoStore'])->name('beneficiario.ingresoStore');
+    Route::resource('alerta', AlertasController::class);
 });
 
 

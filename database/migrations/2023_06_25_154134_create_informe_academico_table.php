@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('direccion_colegio');
             $table->string('desempeño');
             $table->unsignedBigInteger('id_beneficiario');
-            $table->foreign('id_beneficiario')->references('id')->on('beneficiario')->onUpdate('cascade')->onUpdate('cascade');
+            $table->foreign('id_beneficiario')->references('id')->on('beneficiarios')->onUpdate('cascade')->onUpdate('cascade');
 
             $table->timestamps();
         });

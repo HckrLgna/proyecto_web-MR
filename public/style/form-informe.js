@@ -78,7 +78,6 @@ inputs.forEach((input) => {
 });
 
 formulario.addEventListener('submit', (e) => {
-	e.preventDefault();
 	validarEvaluacion();
     validarBeneficiario();
 	const terminos = document.getElementById('terminos');

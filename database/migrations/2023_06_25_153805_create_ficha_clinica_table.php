@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('prescripcion_medica');
             $table->string('observaciones');
             $table->unsignedBigInteger('id_beneficiario');
-            $table->foreign('id_beneficiario')->references('id')->on('beneficiario')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_beneficiario')->references('id')->on('beneficiarios')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

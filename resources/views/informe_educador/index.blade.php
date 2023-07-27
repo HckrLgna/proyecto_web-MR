@@ -25,38 +25,26 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td scope="row">Irren Ma</td>
-            <td>Jaimito</td>
-            <td>16/03/2021</td>
-            <td>
-                <a name="" id="" class="btn btn-info" href="#" role="button">
-                    <i class='bx bx-id-card'></i>
-                </a>
-                <a name="" id="" class="btn btn-primary" href="#" role="button">
-                    <i class='bx bx-message-square-edit' ></i>
-                </a>
-                <a name="" id="" class="btn btn-danger" href="#" role="button">
-                    <i class='bx bx-message-square-x' ></i>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td scope="row">Selena Limon</td>
-            <td>Carlitos</td>
-            <td>11/04/2021</td>
-            <td>
-                <a name="" id="" class="btn btn-info" href="#" role="button">
-                    <i class='bx bx-id-card'></i>
-                </a>
-                <a name="" id="" class="btn btn-primary" href="#" role="button">
-                    <i class='bx bx-message-square-edit' ></i>
-                </a>
-                <a name="" id="" class="btn btn-danger" href="#" role="button">
-                    <i class='bx bx-message-square-x' ></i>
-                </a>
-            </td>
-        </tr>
+        @foreach($informesEducadores as $informeEducador)
+            <tr>
+                <td scope="row">{{$informeEducador->user->fullname}}</td>
+                <td>{{$informeEducador->beneficiario->nombre}}</td>
+                <td>{{$informeEducador->fecha}}</td>
+                <td>
+                    <a name="" id="" class="btn btn-info" href="{{route('informeEducador.show',$informeEducador)}}" role="button">
+                        <i class='bx bx-id-card'></i>
+                    </a>
+                    <a name="" id="" class="btn btn-primary" href="{{route('informeEducador.edit', $informeEducador)}}" role="button">
+                        <i class='bx bx-message-square-edit' ></i>
+                    </a>
+                    <a name="" id="" class="btn btn-danger" href="{{route('informeEducador.destroy',$informeEducador)}}" role="button">
+                        <i class='bx bx-message-square-x' ></i>
+                    </a>
+                </td>
+            </tr>
+        @endforeach
+
+
         </tbody>
     </table>
 
