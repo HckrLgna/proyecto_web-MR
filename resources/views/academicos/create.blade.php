@@ -14,8 +14,8 @@
 
     <!--    CONTENT    -->
 
-    <form action="" class="formulario" id="formulario">
-
+    <form action="{{route('informeAcademico.store')}}" method="post" class="formulario" id="formulario">
+        @csrf
         <!-- Grupo: Beneficiario -->
         <div class="formulario__grupo" id="grupo__beneficiario">
             <label for="beneficiario" class="formulario__label">Beneficiario</label>
@@ -23,7 +23,9 @@
                 <select class="formulario__input" name="beneficiario" id="beneficiario">
                     <option value="0" selected>Seleccionar beneficiario</option>
                     <!-- Listar beneficiarios -->
-                    <option value="1">Jaimito</option>
+                    @foreach($beneficiarios as $beneficiario)
+                        <option value="{{$beneficiario->id}}" >{{$beneficiario->nombre}}</option>
+                    @endforeach
                     <!-- *********************** -->
                 </select>
             </div>
@@ -91,6 +93,6 @@
 @endsection
 
 @section('js-content')
-    <script src="{{ asset('style/form-academico.js') }}"></script>
+
 
 @endsection

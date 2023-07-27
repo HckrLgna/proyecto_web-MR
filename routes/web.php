@@ -12,8 +12,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('user', UserController::class)->middleware('auth');
-Route::resource('beneficiario', BeneficiarioController::class)->middleware('auth');
+
+Route::group(['middleware'=> 'auth'],function (){
+    Route::get('user/educador', [UserController::class, 'indexEducador'])->name('user.educador');
+    Route::resource('user', UserController::class);
+
+    Route::resource('beneficiario', BeneficiarioController::class);
+    Route::post('beneficiario/ingreso', [BeneficiarioController::class, 'ingresoStore'])->name('beneficiario.ingresoStore');
+});
+
+
+
 Route::resource('informeEducador', InformeEducadorController::class)->middleware('auth');
 Route::resource('informeAcademico', InformeAcademicoController::class)->middleware('auth');
 Route::resource('fichaClinica', FichaClinicaController::class)->middleware('auth');

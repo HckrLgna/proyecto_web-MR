@@ -14,8 +14,8 @@
 
     <!--    CONTENT    -->
 
-    <form action="" class="formulario" id="formulario">
-
+    <form action="{{route('fichaClinica.store')}}" method="post" class="formulario" id="formulario">
+    @csrf
         <!-- Grupo: Beneficiario -->
         <div class="formulario__grupo" id="grupo__beneficiario">
             <label for="beneficiario" class="formulario__label">Beneficiario</label>
@@ -23,8 +23,9 @@
                 <select class="formulario__input" name="beneficiario" id="beneficiario">
                     <option value="0" selected>Seleccionar beneficiario</option>
                     <!-- Listar beneficiarios -->
-                    <option value="1">Jaimito</option>
-                    <option value="2">Carlitos</option>
+                    @foreach($beneficiarios as $beneficiario)
+                        <option value="{{$beneficiario->id}}">{{$beneficiario->nombre}}</option>
+                    @endforeach
                     <!-- *********************** -->
                 </select>
             </div>
@@ -34,7 +35,7 @@
         <div class="formulario__grupo" id="grupo__grado">
             <label for="especialidad" class="formulario__label">Especialidad</label>
             <div class="formulario__grupo-input">
-                <select class="formulario__input" name="especialidad" id="especialidad">
+                <select class="formulario__input" name="motivo" id="especialidad">
                     <option value="0" selected>Seleccionar un motivo</option>
                     <option value="1">Primaria: 1</option>
                     <option value="2">Primaria: 2</option>
@@ -66,7 +67,7 @@
         <!-- Grupo: Prescripcion -->
         <div class="formulario__grupo" id="grupo__prescripcion">
             <label for="prescripcion" class="formulario__label">Prescripción</label>
-            <textarea class="formulario__text-area" name="prescripcion" id="prescripcion" placeholder="Cómo se lo encontró?"></textarea>
+            <textarea class="formulario__text-area" name="prescripcion_med" id="prescripcion" placeholder="Cómo se lo encontró?"></textarea>
             <p class="formulario__input-error">Rellene correctamente; solo puede contener numeros, letras y guion bajo.</p>
         </div>
 
@@ -89,6 +90,6 @@
 @endsection
 
 @section('js-content')
-    <script src="{{ asset('style/form-clinico.js') }}"></script>
+
 
 @endsection

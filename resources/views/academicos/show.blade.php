@@ -20,7 +20,7 @@
         <div class="card-body">
 
             <!-- Beneficiario -->
-            <h2 class="formulario__label card-title">Jaimito</h2>
+            <h2 class="formulario__label card-title">{{$informeAcademico->beneficiario->nombre}}</h2>
 
 
 
@@ -31,19 +31,19 @@
                 <!-- Grupo: Grado Escolar -->
                 <div class="formulario__grupo" id="grupo__grado">
                     <h5 for="grado_escolar" class="formulario__label">Grado Escolar</h5>
-                    <h6>2s</h6>
+                    <h6>{{$informeAcademico->grado}}</h6>
                 </div>
 
                 <!-- Grupo: Nombre Colegio -->
                 <div class="formulario__grupo" id="grupo__nombre_colegio">
                     <h5 for="nombre_colegio" class="formulario__label">Nombre Colegio</h5>
-                    <h6>Don bosco</h6>
+                    <h6>{{$informeAcademico->nombre_colegio}}</h6>
                 </div>
 
                 <!-- Grupo: Direccion Colegio -->
                 <div class="formulario__grupo" id="grupo__direccion_colegio">
                     <h5 for="direccion_colegio" class="formulario__label">Dirección Colegio</h5>
-                    <h6>B/12 de diciembre</h6>
+                    <h6>{{$direccion_colegio}}</h6>
                 </div>
 
 
@@ -51,7 +51,7 @@
                 <!-- Grupo: Desempeño -->
                 <div class="formulario__grupo" id="grupo__desempeño">
                     <h5 for="desempeño" class="formulario__label">Desempeño</h5>
-                    <h6>Redaccion</h6>
+                    <h6>{{$informeAcademico->desempeño}}</h6>
                 </div>
 
 

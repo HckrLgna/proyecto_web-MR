@@ -26,40 +26,36 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td scope="row">Irren Ma</td>
-            <td>2p</td>
-            <td>Don bosco</td>
-            <td>12/02/2023</td>
-            <td>
-                <a name="" id="" class="btn btn-info" href="#" role="button">
-                    <i class='bx bx-id-card'></i>
-                </a>
-                <a name="" id="" class="btn btn-primary" href="#" role="button">
-                    <i class='bx bx-message-square-edit' ></i>
-                </a>
-                <a name="" id="" class="btn btn-danger" href="#" role="button">
-                    <i class='bx bx-message-square-x' ></i>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td scope="row">Selena Limon</td>
-            <td>4s</td>
-            <td>La Salle</td>
-            <td>10/03/2023</td>
-            <td>
-                <a name="" id="" class="btn btn-info" href="#" role="button">
-                    <i class='bx bx-id-card'></i>
-                </a>
-                <a name="" id="" class="btn btn-primary" href="#" role="button">
-                    <i class='bx bx-message-square-edit' ></i>
-                </a>
-                <a name="" id="" class="btn btn-danger" href="#" role="button">
-                    <i class='bx bx-message-square-x' ></i>
-                </a>
-            </td>
-        </tr>
+        @foreach($informesAcademicos as $informeAcademico)
+            <tr>
+
+                <td scope="row">{{$informeAcademico->beneficiario->nombre}}</td>
+                <td>{{$informeAcademico->grado}}</td>
+                <td>{{$informeAcademico->nombre_colegio}}</td>
+                <td>{{$informeAcademico->created_at}}</td>
+                <td>
+                    <a name="" id="" class="btn btn-info" href="{{route('informeAcademico.show',$informeAcademico)}}" role="button">
+                        <i class='bx bx-id-card'></i>
+                    </a>
+                    <a name="" id="" class="btn btn-primary" href="{{route('informeAcademico.edit',$informeAcademico)}}" role="button">
+                        <i class='bx bx-message-square-edit' ></i>
+                    </a>
+                    <a  href="{{ route('informeAcademico.destroy',$informeAcademico) }}" name="" id="" class="btn btn-danger"  role="button"
+                        onclick="event.preventDefault();
+                                                     document.getElementById('destroy-form').submit();">
+                        <i class='bx bx-message-square-x' ></i>
+                    </a>
+
+                    <form id="destroy-form" action="{{route('informeAcademico.destroy',$informeAcademico)}}" method="post" class="d-none">
+                        @csrf
+                        @method('DELETE')
+
+                    </form>
+                </td>
+            </tr>
+        @endforeach
+
+
         </tbody>
     </table>
 

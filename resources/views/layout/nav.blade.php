@@ -29,7 +29,7 @@
     <ul class="nav-links">
         <li>
             <div class="iocn-link">
-                <a href="#">
+                <a href="{{route('user.index')}}">
                     <i class='bx bx-user'></i>
                     <span class="link_name">Usuario</span>
                 </a>
@@ -61,7 +61,7 @@
         </li>
         <li>
             <div class="iocn-link">
-                <a href="#">
+                <a href="{{route('beneficiario.index')}}">
                     <i class='bx bx-star'></i>
                     <span class="link_name">Beneficiario</span>
                 </a>
@@ -75,7 +75,7 @@
         </li>
         <li>
             <div class="iocn-link">
-                <a href="#">
+                <a href="{{route('informeAcademico.index')}}">
                     <i class='bx bxs-school'></i>
                     <span class="link_name">Académico</span>
                 </a>
@@ -83,13 +83,13 @@
             </div>
             <ul class="sub-menu">
                 <li><a class="link_name" href="#">Académico</a></li>
-                <li><a href="#">Crear</a></li>
-                <li><a href="#">Listar</a></li>
+                <li><a href="{{route('informeAcademico.create')}}">Crear</a></li>
+                <li><a href="{{route('informeAcademico.index')}}">Listar</a></li>
             </ul>
         </li>
         <li>
             <div class="iocn-link">
-                <a href="#">
+                <a href="{{route('fichaClinica.index')}}">
                     <i class='bx bx-heart'></i>
                     <span class="link_name">Clínico</span>
                 </a>
@@ -97,8 +97,8 @@
             </div>
             <ul class="sub-menu">
                 <li><a class="link_name" href="#">Clínico</a></li>
-                <li><a href="#">Crear</a></li>
-                <li><a href="#">Listar</a></li>
+                <li><a href="{{route('fichaClinica.create')}}">Crear</a></li>
+                <li><a href="{{route('fichaClinica.index')}}">Listar</a></li>
             </ul>
         </li>
         <li>

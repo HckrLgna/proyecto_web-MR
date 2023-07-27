@@ -86,4 +86,8 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route('user.index');
     }
+    //funciones para director o academico
+    public function indexEducador(){
+        return view('academicos.index');
+    }
 }

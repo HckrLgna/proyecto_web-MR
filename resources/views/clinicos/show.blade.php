@@ -18,7 +18,7 @@
         <div class="card-body">
 
             <!-- Beneficiario -->
-            <h2 class="formulario__label card-title">Jaimito</h2>
+            <h2 class="formulario__label card-title">{{$fichaClinica->beneficiario->nombre}}</h2>
 
 
 
@@ -27,7 +27,7 @@
                 <!-- Grupo: Nombre Doctor -->
                 <div class="formulario__grupo" id="grupo__nombre_colegio">
                     <h5 class="formulario__label">Nombre Doctor</h5>
-                    <h6>Info</h6>
+                    <h6>{{$fichaClinica->nombre_doctor}}</h6>
                 </div>
 
                 <!-- Grupo: Especialidad -->
@@ -40,7 +40,7 @@
                 <!-- Grupo: Motivo -->
                 <div class="formulario__grupo" id="grupo__direccion_colegio">
                     <h5 class="formulario__label">Motivo</h5>
-                    <h6>Info</h6>
+                    <h6>{{$fichaClinica->motivo}}</h6>
                 </div>
 
 
@@ -48,13 +48,13 @@
                 <!-- Grupo: Prescripcion -->
                 <div class="formulario__grupo" id="grupo__desempeño">
                     <h5 class="formulario__label">Prescripción</h5>
-                    <h6>Info</h6>
+                    <h6>{{$fichaClinica->prescripcion_medica}}</h6>
                 </div>
 
                 <!-- Grupo: Observaciones -->
                 <div class="formulario__grupo" id="grupo__desempeño">
                     <h5 class="formulario__label">Observaciones</h5>
-                    <h6>Info</h6>
+                    <h6>{{$fichaClinica->observaciones}}</h6>
                 </div>
 
 

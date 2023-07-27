@@ -14,20 +14,13 @@
 
     <!--    CONTENT    -->
 
-    <form action="" class="formulario" id="formulario">
-
+    <form action="{{route('fichaClinica.update',$fichaClinica)}}" method="post" class="formulario" id="formulario">
+    @csrf
+        @method('PUT')
         <!-- Grupo: Beneficiario -->
         <div class="formulario__grupo" id="grupo__beneficiario">
             <label for="beneficiario" class="formulario__label">Beneficiario</label>
-            <div class="formulario__grupo-input">
-                <select class="formulario__input" name="beneficiario" id="beneficiario">
-                    <option value="0" selected>Seleccionar beneficiario</option>
-                    <!-- Listar beneficiarios -->
-                    <option value="1">Jaimito</option>
-                    <option value="2">Carlitos</option>
-                    <!-- *********************** -->
-                </select>
-            </div>
+            <input id="beneficiario" name="nombre" value="{{$fichaClinica->beneficiario->nombre}}">
         </div>
 
         <!-- Grupo: Grado Motivo -->
@@ -50,7 +43,7 @@
         <div class="formulario__grupo" id="grupo__nombre_doctor">
             <label for="nombre_doctor" class="formulario__label">Nombre Doctor</label>
             <div class="formulario__grupo-input">
-                <input type="text" class="formulario__input" name="nombre_doctor" id="nombre_doctor" placeholder="John Doe">
+                <input type="text" class="formulario__input" name="nombre_doctor" id="nombre_doctor" value="{{$fichaClinica->nombre_doctor}}">
                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
             <p class="formulario__input-error">Rellene correctamente; solo puede contener numeros, letras y guion bajo.</p>
@@ -59,21 +52,21 @@
         <!-- Grupo: Motivo -->
         <div class="formulario__grupo" id="grupo__motivo">
             <label for="motivo" class="formulario__label">Motivo</label>
-            <textarea class="formulario__text-area" name="motivo" id="motivo" placeholder="Cómo se lo encontró?"></textarea>
+            <textarea class="formulario__text-area" name="motivo" id="motivo" placeholder="Cómo se lo encontró?">{{$fichaClinica->motivo}}</textarea>
             <p class="formulario__input-error">Rellene correctamente; solo puede contener numeros, letras y guion bajo.</p>
         </div>
 
         <!-- Grupo: Prescripcion -->
         <div class="formulario__grupo" id="grupo__prescripcion">
             <label for="prescripcion" class="formulario__label">Prescripción</label>
-            <textarea class="formulario__text-area" name="prescripcion" id="prescripcion" placeholder="Cómo se lo encontró?"></textarea>
+            <textarea class="formulario__text-area" name="prescripcion" id="prescripcion"  >{{$fichaClinica->prescripcion_medica}}</textarea>
             <p class="formulario__input-error">Rellene correctamente; solo puede contener numeros, letras y guion bajo.</p>
         </div>
 
         <!-- Grupo: Observaciones -->
         <div class="formulario__grupo" id="grupo__pbservaciones">
             <label for="observaciones" class="formulario__label">Observaciones</label>
-            <textarea class="formulario__text-area" name="observaciones" id="observaciones" placeholder="Cómo se lo encontró?"></textarea>
+            <textarea class="formulario__text-area" name="observaciones" id="observaciones"  >{{$fichaClinica->observaciones}}</textarea>
             <p class="formulario__input-error">Rellene correctamente; solo puede contener numeros, letras y guion bajo.</p>
         </div>
 

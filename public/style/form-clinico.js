@@ -128,7 +128,7 @@ inputs.forEach((input) => {
 });
 
 formulario.addEventListener('submit', (e) => {
-	e.preventDefault();
+
     validarEspecialidad();
     validarBeneficiario();
     if(campos.nombre_doctor && campos.motivo && campos.prescripcion && campos.observaciones ){

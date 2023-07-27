@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Beneficiario;
 use App\Models\InformeAcademico;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,9 @@ class InformeAcademicoController extends Controller
      */
     public function index()
     {
-        //
+        return view('academicos.index',[
+            'informesAcademicos' => InformeAcademico::all()
+        ]);
     }
 
     /**
@@ -20,7 +23,7 @@ class InformeAcademicoController extends Controller
      */
     public function create()
     {
-        //
+        return view('academicos.create', ['beneficiarios'=> Beneficiario::all()]);
     }
 
     /**
@@ -28,7 +31,14 @@ class InformeAcademicoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $informe = new InformeAcademico();
+        $informe->grado = $request->input('grado_escolar');
+        $informe->nombre_colegio = $request->input('nombre_colegio');
+        $informe->direccion_colegio = $request->input('direccion_colegio');
+        $informe->desempeño = $request->input('desempeño');
+        $informe->id_beneficiario = $request->input('beneficiario');
+        $informe->save();
+        return redirect()->route('informeAcademico.index');
     }
 
     /**
@@ -36,7 +46,7 @@ class InformeAcademicoController extends Controller
      */
     public function show(InformeAcademico $informeAcademico)
     {
-        //
+        return view('academicos.show',['informeAcademico'=>$informeAcademico]);
     }
 
     /**
@@ -44,7 +54,7 @@ class InformeAcademicoController extends Controller
      */
     public function edit(InformeAcademico $informeAcademico)
     {
-        //
+        return view('academicos.edit',['informeAcademico'=>$informeAcademico]);
     }
 
     /**
@@ -52,7 +62,12 @@ class InformeAcademicoController extends Controller
      */
     public function update(Request $request, InformeAcademico $informeAcademico)
     {
-        //
+        $informeAcademico->grado = $request->input('grado_escolar');
+        $informeAcademico->nombre_colegio = $request->input('nombre_colegio');
+        $informeAcademico->direccion_colegio = $request->input('direccion_colegio');
+        $informeAcademico->desempeño = $request->input('desempeño');
+        $informeAcademico->save();
+        return redirect()->route('informeAcademico.index');
     }
 
     /**
@@ -60,6 +75,7 @@ class InformeAcademicoController extends Controller
      */
     public function destroy(InformeAcademico $informeAcademico)
     {
-        //
+        $informeAcademico->delete();
+        return redirect()->route('informeAcademico.index');
     }
 }

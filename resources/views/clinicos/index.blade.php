@@ -25,38 +25,34 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td scope="row">Jaimito</td>
-            <td>Gustavo Daza</td>
-            <td>12/02/2021</td>
-            <td>
-                <a name="" id="" class="btn btn-info" href="#" role="button">
-                    <i class='bx bx-id-card'></i>
-                </a>
-                <a name="" id="" class="btn btn-primary" href="#" role="button">
-                    <i class='bx bx-message-square-edit' ></i>
-                </a>
-                <a name="" id="" class="btn btn-danger" href="#" role="button">
-                    <i class='bx bx-message-square-x' ></i>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td scope="row">Carlitos</td>
-            <td>Juan Carlos Mejía</td>
-            <td>10/03/2021</td>
-            <td>
-                <a name="" id="" class="btn btn-info" href="#" role="button">
-                    <i class='bx bx-id-card'></i>
-                </a>
-                <a name="" id="" class="btn btn-primary" href="#" role="button">
-                    <i class='bx bx-message-square-edit' ></i>
-                </a>
-                <a name="" id="" class="btn btn-danger" href="#" role="button">
-                    <i class='bx bx-message-square-x' ></i>
-                </a>
-            </td>
-        </tr>
+        @foreach($clinicos as $clinico)
+            <tr>
+                <td scope="row">{{$clinico->beneficiario->nombre}}</td>
+                <td>{{$clinico->nombre_doctor}}</td>
+                <td>{{$clinico->created_at}}</td>
+                <td>
+                    <a name="" id="" class="btn btn-info" href="{{route('fichaClinica.show',$clinico)}}" role="button">
+                        <i class='bx bx-id-card'></i>
+                    </a>
+                    <a name="" id="" class="btn btn-primary" href="{{route('fichaClinica.edit',$clinico)}}" role="button">
+                        <i class='bx bx-message-square-edit' ></i>
+                    </a>
+                    <a  href="{{ route('fichaClinica.destroy',$clinico) }}" name="" id="" class="btn btn-danger"  role="button"
+                        onclick="event.preventDefault();
+                                                     document.getElementById('destroy-form').submit();">
+                        <i class='bx bx-message-square-x' ></i>
+                    </a>
+
+                    <form id="destroy-form" action="{{route('fichaClinica.destroy',$clinico)}}" method="post" class="d-none">
+                        @csrf
+                        @method('DELETE')
+
+                    </form>
+
+                </td>
+            </tr>
+        @endforeach
+
         </tbody>
     </table>
 

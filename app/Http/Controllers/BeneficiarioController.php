@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Beneficiario;
+use App\Models\DatosIngreso;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -47,7 +48,7 @@ class BeneficiarioController extends Controller
     public function show(Beneficiario $beneficiario)
     {
         $user = User::find($beneficiario->id_usuario);
-        return view('beneficiarios.show', ['beneficiario' => $beneficiario, 'user'=>$user]);
+        return view('beneficiarios.show', ['beneficiario' => $beneficiario, 'user'=>$user ]);
     }
 
     /**
@@ -73,5 +74,15 @@ class BeneficiarioController extends Controller
     {
         $beneficiario->delete();
         return redirect()->route('beneficiario.index');
+    }
+
+    public function ingresoStore(Request $request){
+
+        $ingreso = new DatosIngreso();
+        $ingreso->estado = $request->input('estado');
+        $ingreso->fecha_ingreso = $request->input('fecha_ingreso');
+        $ingreso->id_beneficiario = $request->input('id_beneficiario');
+        $ingreso->save();
+        return redirect()->back();
     }
 }
