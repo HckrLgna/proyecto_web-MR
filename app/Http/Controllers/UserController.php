@@ -90,4 +90,24 @@ class UserController extends Controller
     public function indexEducador(){
         return view('academicos.index');
     }
+    public function mostrarPagina()
+    {
+        // Nombre de la página actual (puedes ajustar esto según tus necesidades)
+        $nombrePagina = 'nombre_de_la_pagina_actual';
+
+        // Obtener el registro del contador de vistas para esta página
+        $view = View::where('page_name', $nombrePagina)->first();
+
+        // Si no existe el registro, crearlo
+        if (!$view) {
+            $view = View::create([
+                'page_name' => $nombrePagina,
+                'count' => 0,
+            ]);
+        }
+
+        // Incrementar el contador
+        $view->increment('count');
+        return view('nombre_de_la_vista', ['contador' => $view->count]);
+    }
 }
