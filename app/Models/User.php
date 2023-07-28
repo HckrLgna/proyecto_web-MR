@@ -49,7 +49,7 @@ class User extends Authenticatable
     ];
     //relaciones
     public function rol(): BelongsTo{
-        return $this->belongsTo(Role::class, 'rol_id', 'id');
+        return $this->belongsTo(Role::class, 'role_id', 'id');
     }
     public function beneficiarios() :HasMany{
         return $this->hasMany(Beneficiario::class);

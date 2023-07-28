@@ -28,12 +28,9 @@ class HomeController extends Controller
     {
         $id_role = Auth::user()->role_id;
         if ($id_role == 1 || $id_role == 2){
-            return view ('usuarios.index',[
-                'users' => User::all(),
-                'roles' => Role::all()
-            ]);
+            return redirect()->route('user.index');
         }else{
-            return view('academicos.index');
+            return redirect()->route('informeAcademico.index');
         }
 
     }

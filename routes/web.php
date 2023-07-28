@@ -7,10 +7,11 @@ use App\Http\Controllers\InformeEducadorController;
 use App\Http\Controllers\FichaClinicaController;
 use App\Http\Controllers\DatosIngresoController;
 use App\Http\Controllers\AlertasController;
+use App\Http\Controllers\EstadisticasController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 
@@ -27,6 +28,11 @@ Route::group(['middleware'=> 'auth'],function (){
     Route::resource('informeAcademico', InformeAcademicoController::class);
     Route::resource('fichaClinica', FichaClinicaController::class);
     Route::resource('datosIngreso', DatosIngresoController::class);
+
+    Route::get('estadisticas',[EstadisticasController::class, 'index'])->name('estadisticas.index');
+    Route::get('estadisticas/alerta',[EstadisticasController::class, 'alertaIndex'])->name('estadisticas_alerta.index');
+    Route::get('estadisticas/informeEducador',[EstadisticasController::class, 'informeEducadorIndex'])->name('estadisticas_informe_educador.index');
+
 });
 
 

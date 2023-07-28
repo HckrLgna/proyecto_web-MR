@@ -43,7 +43,7 @@
                 <!-- Grupo: Direccion Colegio -->
                 <div class="formulario__grupo" id="grupo__direccion_colegio">
                     <h5 for="direccion_colegio" class="formulario__label">Dirección Colegio</h5>
-                    <h6>{{$direccion_colegio}}</h6>
+                    <h6>{{$informeAcademico->direccion_colegio}}</h6>
                 </div>
 
 

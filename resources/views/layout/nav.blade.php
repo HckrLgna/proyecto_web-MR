@@ -131,14 +131,20 @@
         </li>
             @if(Auth::user()->role_id ==1)
                 <li>
-                    <a href="#">
-                        <i class='bx bx-pie-chart-alt-2'></i>
-                        <span class="link_name">Estadísticas</span>
-                    </a>
-                    <ul class="sub-menu blank">
-                        <li><a class="link_name" href="#">Estadísticas</a></li>
+                    <div class="iocn-link">
+                        <a href="{{route('estadisticas.index')}}">
+                            <i class='bx bx-pie-chart-alt-2'></i>
+                            <span class="link_name">Estadísticas</span>
+                        </a>
+                        <i class='bx bxs-chevron-down arrow'></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li><a class="link_name" href="{{route('estadisticas.index')}}">Estadísticas</a></li>
+                        <li><a href="{{route('estadisticas_alerta.index')}}">Alertas</a></li>
+                        <li><a href="{{route('estadisticas_informe_educador.index')}}">Informe Educador</a></li>
                     </ul>
                 </li>
+
             @endif
 
         <li>
@@ -156,8 +162,8 @@
                     <img src="{{ asset('style/profile.jpg') }}" alt="profileImg">
                 </div>
                 <div class="name-job">
-                    <div class="profile_name">Steven</div>
-                    <div class="job">Web Designer</div>
+                    <div class="profile_name">{{substr(Auth()->user()->fullname, 0,13) }}</div>
+                    <div class="job">{{ Auth()->user()->rol->nombre}}</div>
                 </div>
                 <a  href="{{ route('logout') }}"
                    onclick="event.preventDefault();

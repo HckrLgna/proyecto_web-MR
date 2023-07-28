@@ -21,7 +21,7 @@ class Beneficiario extends Model
         return $this->hasMany(DatosIngreso::class, 'id_beneficiario', 'id');
     }
     public function informesEducadores():HasMany{
-        return $this->hasMany(InformeEducador::class);
+        return $this->hasMany(InformeEducador::class,'id_beneficiario','id');
     }
     public function user(): BelongsTo{
         return $this->belongsTo(User::class, 'id_usuario', 'id');

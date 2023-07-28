@@ -41,12 +41,13 @@
                     <a name="" id="" class="btn btn-primary" href="{{route('user.edit',$user)}}" role="button">
                         <i class='bx bx-message-square-edit' ></i>
                     </a>
+                    <a name="" id="" class="btn btn-danger" type="submit" role="button">
+                        <i class='bx bx-message-square-x' ></i>
+                    </a>
                     <form action="{{route('user.destroy',$user)}}" method="post">
                         @csrf
                         @method('DELETE')
-                        <a name="" id="" class="btn btn-danger" type="submit" role="button">
-                            <i class='bx bx-message-square-x' ></i>
-                        </a>
+
 
                     </form>
 
