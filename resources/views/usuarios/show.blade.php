@@ -20,7 +20,7 @@
         <div class="card-body">
 
             <!-- Nombre -->
-            <h2 class="formulario__label card-title">Irren Ma</h2>
+            <h2 class="formulario__label card-title">{{$user->fullname}}</h2>
 
 
 
@@ -29,21 +29,21 @@
                 <!-- Grupo: Correo -->
                 <div class="formulario__grupo" id="grupo__nombre_colegio">
                     <h5 for="nombre_colegio" class="formulario__label">Correo</h5>
-                    <h6>Info</h6>
+                    <h6>{{$user->email}}</h6>
                 </div>
 
                 <!-- Grupo: CI -->
                 <div class="formulario__grupo" id="grupo__direccion_colegio">
                     <h5 for="direccion_colegio" class="formulario__label">CI</h5>
-                    <h6>Info</h6>
+                    <h6>{{$user->ci}}</h6>
                 </div>
 
 
 
                 <!-- Grupo: Ocupación -->
                 <div class="formulario__grupo" id="grupo__desempeño">
-                    <h5 for="desempeño" class="formulario__label">Ocupación</h5>
-                    <h6>Info</h6>
+                    <h5 for="desempeño" class="formulario__label">Rol</h5>
+                    <h6>{{$user->rol->nombre}}</h6>
                 </div>
 
 

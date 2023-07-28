@@ -69,10 +69,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //TODO: terminar el show
         return view('usuarios.show',[
             'user' => $user,
-            'roles' => Role::all()
         ]);
     }
 
