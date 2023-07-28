@@ -32,11 +32,10 @@ const expresiones = {
 
 const campos = {
 	nombre_doctor: false,
-	motivo: false,
-	prescripcion: false,
-    observaciones: false,
+	motivo: true,
+	prescripcion: true,
+    observaciones: true,
     beneficiario: false,
-    especialidad: false,
 }
 
 const validarFormulario = (e) => {
@@ -55,6 +54,8 @@ const validarFormulario = (e) => {
 		break;
 	}
 }
+
+
 
 const validarCampo = (expresion, input, campo) => {
 	console.log("Soy el " + campo);
@@ -75,39 +76,7 @@ const validarCampo = (expresion, input, campo) => {
 	}
 }
 
-const validarPassword2 = () => {
-	const inputPassword1 = document.getElementById('password');
-	const inputPassword2 = document.getElementById('password2');
 
-	if(inputPassword1.value !== inputPassword2.value){
-		document.getElementById(`grupo__password2`).classList.add('formulario__grupo-incorrecto');
-		document.getElementById(`grupo__password2`).classList.remove('formulario__grupo-correcto');
-		document.querySelector(`#grupo__password2 i`).classList.add('fa-times-circle');
-		document.querySelector(`#grupo__password2 i`).classList.remove('fa-check-circle');
-		document.querySelector(`#grupo__password2 .formulario__input-error`).classList.add('formulario__input-error-activo');
-		campos['password'] = false;
-	} else {
-		document.getElementById(`grupo__password2`).classList.remove('formulario__grupo-incorrecto');
-		document.getElementById(`grupo__password2`).classList.add('formulario__grupo-correcto');
-		document.querySelector(`#grupo__password2 i`).classList.remove('fa-times-circle');
-		document.querySelector(`#grupo__password2 i`).classList.add('fa-check-circle');
-		document.querySelector(`#grupo__password2 .formulario__input-error`).classList.remove('formulario__input-error-activo');
-		campos['password'] = true;
-	}
-}
-
-const validarEspecialidad = () => {
-	console.log("Validando...");
-	var especialidad = document.getElementById("especialidad");
-	console.log(especialidad.value);
-	if(especialidad.value == 0 || especialidad.value == "") {
-		campos['grado_escolar'] = false;
-
-	} else {
-		campos['grado_escolar'] = true;
-	}
-	console.log(campos.grado_escolar);
-}
 
 const validarBeneficiario = () => {
 	console.log("Validando...");
@@ -128,11 +97,10 @@ inputs.forEach((input) => {
 });
 
 formulario.addEventListener('submit', (e) => {
-
-    validarEspecialidad();
     validarBeneficiario();
-    if(campos.nombre_doctor && campos.motivo && campos.prescripcion && campos.observaciones ){
-        formulario.reset();
+    console.log(campos.nombre_doctor, campos.motivo, campos.prescripcion, campos.observaciones, campos.beneficiario)
+    if(campos.nombre_doctor && campos.motivo && campos.prescripcion && campos.observaciones && campos.beneficiario){
+        //formulario.reset();
 
         document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
         setTimeout(() => {
@@ -143,6 +111,7 @@ formulario.addEventListener('submit', (e) => {
             icono.classList.remove('formulario__grupo-correcto');
         });
     } else {
+        e.preventDefault()
         document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
     }
 });

@@ -18,20 +18,20 @@ const expresiones = {
 const campos = {
 	nombre_colegio: false,
 	direccion_colegio: false,
-	desempeño: false,
+	desempeño: true,
     grado_escolar: false,
 }
 
 const validarFormulario = (e) => {
 	switch (e.target.name) {
 		case "nombre_colegio":
-			validarCampo(expresiones.nombre, e.target, 'nombre_colegio');
+			validarCampo(expresiones.nombre_colegio, e.target, 'nombre_colegio');
 		break;
 		case "direccion_colegio":
-			validarCampo(expresiones.correo, e.target, 'direccion_colegio');
+			validarCampo(expresiones.direccion_colegio, e.target, 'direccion_colegio');
 		break;
 		case "desempeño":
-			validarCampo(expresiones.ci, e.target, 'desempeño');
+			validarCampo(expresiones.desempeño, e.target, 'desempeño');
 		break;
 	}
 }
@@ -87,12 +87,13 @@ inputs.forEach((input) => {
 });
 
 formulario.addEventListener('submit', (e) => {
-	e.preventDefault();
+	//e.preventDefault();
 	validarGrado();
 	validarBeneficiario();
+    console.log(campos.nombre_colegio, campos.direccion_colegio, campos.desempeño, campos.grado_escolar, campos.beneficiario)
 	const terminos = document.getElementById('terminos');
 	if(campos.nombre_colegio && campos.desempeño && campos.desempeño && campos.grado_escolar && campos.beneficiario){
-		formulario.reset();
+		//formulario.reset();
 
 		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
 		setTimeout(() => {
@@ -103,6 +104,7 @@ formulario.addEventListener('submit', (e) => {
 			icono.classList.remove('formulario__grupo-correcto');
 		});
 	} else {
+        e.preventDefault()
 		document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
 	}
 });

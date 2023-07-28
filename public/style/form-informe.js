@@ -14,15 +14,16 @@ const expresiones = {
 }
 
 const campos = {
-    descripcion: false,
+    descripcion: true,
     beneficiario: false,
     evaluacion: false,
 }
 
 const validarFormulario = (e) => {
+    console.log(e.target)
 	switch (e.target.name) {
         case "descripcion":
-			validarCampo(expresiones.ci, e.target, 'descripcion');
+			validarCampo(expresiones.descripcion, e.target, 'descripcion');
 		break;
 	}
 }
@@ -64,12 +65,12 @@ const validarEvaluacion = () => {
     var evaluacion = document.getElementById("evaluacion");
     console.log(evaluacion.value);
     if(evaluacion.value == 0 || evaluacion.value == "") {
-        campos['beneficiario'] = false;
+        campos['evaluacion'] = false;
 
     } else {
-        campos['beneficiario'] = true;
+        campos['evaluacion'] = true;
     }
-    console.log(campos.beneficiario);
+    console.log(campos.evaluacion);
 }
 
 inputs.forEach((input) => {
@@ -80,9 +81,10 @@ inputs.forEach((input) => {
 formulario.addEventListener('submit', (e) => {
 	validarEvaluacion();
     validarBeneficiario();
+    console.log(campos.beneficiario, campos.evaluacion, campos.descripcion)
 	const terminos = document.getElementById('terminos');
 	if(campos.descripcion && campos.beneficiario && campos.evaluacion){
-		formulario.reset();
+		//formulario.reset();
 
 		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
 		setTimeout(() => {
@@ -93,6 +95,7 @@ formulario.addEventListener('submit', (e) => {
 			icono.classList.remove('formulario__grupo-correcto');
 		});
 	} else {
+        e.preventDefault()
 		document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
 	}
 });

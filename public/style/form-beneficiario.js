@@ -16,7 +16,7 @@ const expresiones = {
 
 const campos = {
 	nombre: false,
-    situacion: false,
+    situacion: true,
     motivo: false,
 }
 
@@ -69,11 +69,12 @@ inputs.forEach((input) => {
 });
 
 formulario.addEventListener('submit', (e) => {
-	e.preventDefault();
+	//e.preventDefault();
 	validarMotivo()
+    console.log(campos.nombre, campos.situacion, campos.motivo)
 	const terminos = document.getElementById('terminos');
 	if(campos.nombre && campos.situacion && campos.motivo){
-		formulario.reset();
+		//formulario.reset();
 
 		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
 		setTimeout(() => {
@@ -84,6 +85,7 @@ formulario.addEventListener('submit', (e) => {
 			icono.classList.remove('formulario__grupo-correcto');
 		});
 	} else {
+        e.preventDefault()
 		document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
 	}
 });

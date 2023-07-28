@@ -31,22 +31,6 @@
             </div>
         </div>
 
-        <!-- Grupo: Grado Motivo -->
-        <div class="formulario__grupo" id="grupo__grado">
-            <label for="especialidad" class="formulario__label">Especialidad</label>
-            <div class="formulario__grupo-input">
-                <select class="formulario__input" name="motivo" id="especialidad">
-                    <option value="0" selected>Seleccionar un motivo</option>
-                    <option value="1">Primaria: 1</option>
-                    <option value="2">Primaria: 2</option>
-                    <option value="3">Primaria: 3</option>
-                    <option value="4">Primaria: 4</option>
-                    <option value="5">Primaria: 5</option>
-                    <option value="6">Primaria: 6</option>
-                </select>
-            </div>
-        </div>
-
         <!-- Grupo: Nombre Doctor -->
         <div class="formulario__grupo" id="grupo__nombre_doctor">
             <label for="nombre_doctor" class="formulario__label">Nombre Doctor</label>
@@ -90,6 +74,6 @@
 @endsection
 
 @section('js-content')
-
+    <script src="{{ asset('style/form-clinico.js') }}"></script>
 
 @endsection

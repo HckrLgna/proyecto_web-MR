@@ -94,5 +94,5 @@
 
 @section('js-content')
 
-
+    <script src="{{ asset('style/form-academico.js') }}"></script>
 @endsection
