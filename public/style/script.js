@@ -16,10 +16,12 @@ sidebarBtn.addEventListener("click", ()=>{
 
 changeTheme = function(){
   var css = document.getElementById("theme");
+    console.log(css)
   var btnTheme = document.getElementById("btn-change-theme");
   var menuMode = document.getElementById("menu-mode");
   var bootMode = document.getElementById("usuarios");
   fileName = css.getAttribute("href");
+    console.log(fileName)
   if(fileName == "style/dark.css"){
       css.setAttribute("href", "style/light.css");
       btnTheme.innerHTML = '<i class="fas fa-moon"></i><span class="link_name">Night</span>';
@@ -63,4 +65,4 @@ var changeThemeAuto = () => {
 }
 let btnTheme = document.getElementById("btn-change-theme");
 btnTheme.addEventListener("click", changeTheme);
-changeThemeAuto()
+//changeThemeAuto()

@@ -14,7 +14,7 @@
     </div>
 
     <!--    CONTENT    -->
-    <div class="card text-center" data-bs-theme="light">
+    <div class="card text-center" id="usuarios" data-bs-theme="light">
         <div class="card-body">
 
             <!-- Beneficiario -->
@@ -32,7 +32,7 @@
 @endsection
 
 @section('js-content')
-    <script src="{{ asset('style/form-academico.js') }}"></script>
+
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>

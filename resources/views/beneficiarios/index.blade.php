@@ -87,6 +87,5 @@
             responsive: true,
             autoWidth: false,
         });
-
     </script>
 @endsection

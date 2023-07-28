@@ -13,7 +13,7 @@
     </div>
 
     <!--    CONTENT    -->
-
+    <p id="usuarios" data-bs-theme="light"></p>
     <form method="POST" action="{{route('user.store')}}" class="formulario" id="formulario">
     @csrf
 
@@ -98,6 +98,6 @@
 @endsection
 
 @section('js-content')
-
+    <script src="{{ asset('style/form-usuario.js') }}"></script>
 
 @endsection

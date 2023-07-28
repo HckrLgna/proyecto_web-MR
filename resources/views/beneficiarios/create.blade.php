@@ -68,6 +68,5 @@
 @endsection
 
 @section('js-content')
-     <!-- script src="{{ asset('style/form-beneficiario.js') }}"></script> -->
-
+     <script src="{{ asset('style/form-beneficiario.js') }}"></script>
 @endsection

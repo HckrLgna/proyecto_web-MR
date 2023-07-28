@@ -3,14 +3,14 @@ const inputs = document.querySelectorAll('#formulario input');
 
 
 const expresiones = {
-	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+    fullname: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
 	password: /^.{4,12}$/, // 4 a 12 digitos.
 	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
 	ci: /^\d{7,14}$/, // 7 a 14 numeros.
 }
 
 const campos = {
-	nombre: false,
+    nombre: false,
 	password: false,
 	correo: false,
 	ci: false,
@@ -19,8 +19,8 @@ const campos = {
 
 const validarFormulario = (e) => {
 	switch (e.target.name) {
-		case "nombre":
-			validarCampo(expresiones.nombre, e.target, 'nombre');
+		case "fullname":
+			validarCampo(expresiones.fullname, e.target, 'nombre');
 		break;
 		case "password":
 			validarCampo(expresiones.password, e.target, 'password');
@@ -29,7 +29,7 @@ const validarFormulario = (e) => {
 		case "password2":
 			validarPassword2();
 		break;
-		case "correo":
+		case "email":
 			validarCampo(expresiones.correo, e.target, 'correo');
 		break;
 		case "ci":
@@ -84,7 +84,7 @@ const validarRol = () => {
 	console.log(rol);
 	if(rol.value == 0 || rol.value == "") {
 		campos['rol'] = false;
-		
+
 	} else {
 		campos['rol'] = true;
 	}
@@ -97,12 +97,12 @@ inputs.forEach((input) => {
 });
 
 formulario.addEventListener('submit', (e) => {
-	e.preventDefault();
+	//e.preventDefault();
 	validarRol()
+    console.log(campos.nombre, campos.correo, campos.password, campos.rol, campos.ci)
 	const terminos = document.getElementById('terminos');
 	if(campos.nombre && campos.password && campos.correo && campos.ci && campos.rol){
-		formulario.reset();
-
+		//formulario.reset();
 		document.getElementById('formulario__mensaje-exito').classList.add('formulario__mensaje-exito-activo');
 		setTimeout(() => {
 			document.getElementById('formulario__mensaje-exito').classList.remove('formulario__mensaje-exito-activo');
