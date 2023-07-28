@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Beneficiario;
 use App\Models\FichaClinica;
+use App\Models\View;
 use Illuminate\Http\Request;
 
 class FichaClinicaController extends Controller
@@ -13,8 +14,25 @@ class FichaClinicaController extends Controller
      */
     public function index()
     {
+        // Nombre de la página actual (puedes ajustar esto según tus necesidades)
+        $nombrePagina = 'fichaClinica.index';
+
+        // Obtener el registro del contador de vistas para esta página
+        $view = View::where('page_name', $nombrePagina)->first();
+
+        // Si no existe el registro, crearlo
+        if (!$view) {
+            $view = View::create([
+                'page_name' => $nombrePagina,
+                'count' => 0,
+            ]);
+        }
+
+        // Incrementar el contador
+        $view->increment('count');
         return view('clinicos.index',[
             'clinicos' => FichaClinica::all(),
+            'contador' => $view->count
         ]);
     }
 

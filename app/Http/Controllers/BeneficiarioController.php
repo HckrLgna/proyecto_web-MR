@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Beneficiario;
 use App\Models\DatosIngreso;
 use App\Models\User;
+use App\Models\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,8 +16,26 @@ class BeneficiarioController extends Controller
      */
     public function index()
     {
+        // Nombre de la página actual (puedes ajustar esto según tus necesidades)
+        $nombrePagina = 'beneficiarios.index';
+
+        // Obtener el registro del contador de vistas para esta página
+        $view = View::where('page_name', $nombrePagina)->first();
+
+        // Si no existe el registro, crearlo
+        if (!$view) {
+            $view = View::create([
+                'page_name' => $nombrePagina,
+                'count' => 0,
+            ]);
+        }
+
+        // Incrementar el contador
+        $view->increment('count');
+
         return view('beneficiarios.index',[
             'beneficiarios' => Beneficiario::all(),
+            'contador' => $view->count
         ]);
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Alertas;
 use App\Models\Beneficiario;
 use App\Models\InformeEducador;
+use App\Models\View;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,25 @@ class InformeEducadorController extends Controller
      */
     public function index()
     {
+        // Nombre de la página actual (puedes ajustar esto según tus necesidades)
+        $nombrePagina = 'informeEducador.index';
+
+        // Obtener el registro del contador de vistas para esta página
+        $view = View::where('page_name', $nombrePagina)->first();
+
+        // Si no existe el registro, crearlo
+        if (!$view) {
+            $view = View::create([
+                'page_name' => $nombrePagina,
+                'count' => 0,
+            ]);
+        }
+
+        // Incrementar el contador
+        $view->increment('count');
         return view('informe_educador.index',[
-            'informesEducadores' => InformeEducador::all()
+            'informesEducadores' => InformeEducador::all(),
+            'contador' => $view->count
         ]);
     }
 

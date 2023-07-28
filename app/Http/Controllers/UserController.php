@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\View;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
@@ -14,9 +15,27 @@ class UserController extends Controller
      */
     public function index()
     {
+        // Nombre de la página actual (puedes ajustar esto según tus necesidades)
+        $nombrePagina = 'user.index';
+
+        // Obtener el registro del contador de vistas para esta página
+        $view = View::where('page_name', $nombrePagina)->first();
+
+        // Si no existe el registro, crearlo
+        if (!$view) {
+            $view = View::create([
+                'page_name' => $nombrePagina,
+                'count' => 0,
+            ]);
+        }
+
+        // Incrementar el contador
+        $view->increment('count');
+
         return view('usuarios.index',[
             'users' => User::all(),
             'roles' => Role::all(),
+            'contador' => $view->count,
         ]);
     }
 
@@ -93,7 +112,7 @@ class UserController extends Controller
     public function mostrarPagina()
     {
         // Nombre de la página actual (puedes ajustar esto según tus necesidades)
-        $nombrePagina = 'nombre_de_la_pagina_actual';
+        $nombrePagina = 'user.index';
 
         // Obtener el registro del contador de vistas para esta página
         $view = View::where('page_name', $nombrePagina)->first();

@@ -12,5 +12,5 @@ class View extends Model
     protected $fillable = ['page_name', 'count'];
 
     // Definir la relación para acceder a la tabla page_views
-    protected $table = 'page_views';
+    protected $table = 'views';
 }
