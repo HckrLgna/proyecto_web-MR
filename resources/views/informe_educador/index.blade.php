@@ -28,6 +28,7 @@
         @foreach($informesEducadores as $informeEducador)
             <tr>
                 <td scope="row">{{$informeEducador->user->fullname}}</td>
+
                 <td>{{$informeEducador->beneficiario->nombre}}</td>
                 <td>{{$informeEducador->fecha}}</td>
                 <td>

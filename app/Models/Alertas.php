@@ -12,6 +12,6 @@ class Alertas extends Model
     protected $table = 'alertas';
 
     public function informeEducador():BelongsTo{
-        return $this->belongsTo(InformeEducador::class, 'id_informe_educador');
+        return $this->belongsTo(InformeEducador::class, 'id_informe_educador', 'id');
     }
 }

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alertas;
 use App\Models\Beneficiario;
 use App\Models\InformeEducador;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class InformeEducadorController extends Controller
@@ -13,7 +15,9 @@ class InformeEducadorController extends Controller
      */
     public function index()
     {
-        return view('informe_educador.index');
+        return view('informe_educador.index',[
+            'informesEducadores' => InformeEducador::all()
+        ]);
     }
 
     /**
@@ -32,8 +36,13 @@ class InformeEducadorController extends Controller
     public function store(Request $request)
     {
         $informe = new InformeEducador();
-        $informe->
-        dd($request);
+        $informe->fecha = Carbon::now();
+        $informe->descripcion = $request->input('descripcion');
+        $informe->evaluacion = $request->input('evaluacion');
+        $informe->id_usuario = auth()->user()->id;
+        $informe->id_beneficiario = $request->input('beneficiario');
+        $informe->save();
+        return redirect()->route('informeEducador.index');
     }
 
     /**
@@ -49,15 +58,15 @@ class InformeEducadorController extends Controller
      */
     public function edit(InformeEducador $informeEducador)
     {
-        return view('informe_educador.edit',['informeEducador', $informeEducador]);
+        return view('informe_educador.edit',['informeEducador'=> $informeEducador]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, InformeEducador $informeEducador)
+    public function update(Request $request, InformeEducador $informe)
     {
-        dd($request);
+        return redirect()->route('informeEducador.index');
     }
 
     /**
@@ -65,6 +74,18 @@ class InformeEducadorController extends Controller
      */
     public function destroy(InformeEducador $informeEducador)
     {
-        dd($informeEducador);
+        $informeEducador->delete();
+        return redirect()->back();
+    }
+
+    public function alertaStore(Request $request){
+        $alerta = new Alertas();
+        $alerta->titulo = $request->input('titulo');
+        $alerta->fecha = Carbon::now()->format('Y-m-d');
+        $alerta->estado = $request->input('estado');
+        $alerta->detalle = $request->input('detalle');
+        $alerta->id_informe_educador = $request->input('id_informe_educador');
+        $alerta->save();
+        return redirect()->back();
     }
 }

@@ -21,14 +21,17 @@ Route::group(['middleware'=> 'auth'],function (){
     Route::resource('beneficiario', BeneficiarioController::class);
     Route::post('beneficiario/ingreso', [BeneficiarioController::class, 'ingresoStore'])->name('beneficiario.ingresoStore');
     Route::resource('alerta', AlertasController::class);
+
+    Route::resource('informeEducador', InformeEducadorController::class);
+    Route::post('informeEducador/alerta',[InformeEducadorController::class, 'alertaStore'])->name('informeEducador.alertaStore');
+    Route::resource('informeAcademico', InformeAcademicoController::class);
+    Route::resource('fichaClinica', FichaClinicaController::class);
+    Route::resource('datosIngreso', DatosIngresoController::class);
 });
 
 
 
-Route::resource('informeEducador', InformeEducadorController::class)->middleware('auth');
-Route::resource('informeAcademico', InformeAcademicoController::class)->middleware('auth');
-Route::resource('fichaClinica', FichaClinicaController::class)->middleware('auth');
-Route::resource('datosIngreso', DatosIngresoController::class)->middleware('auth');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

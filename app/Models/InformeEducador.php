@@ -15,7 +15,10 @@ class InformeEducador extends Model
         return $this->belongsTo(User::class, 'id_usuario', 'id');
     }
 
+    public function beneficiario():BelongsTo{
+        return $this->belongsTo(Beneficiario::class, 'id_beneficiario', 'id');
+    }
     public function alertas():HasMany{
-        return $this->hasMany(Alertas::class);
+        return $this->hasMany(Alertas::class, 'id_informe_educador', 'id');
     }
 }

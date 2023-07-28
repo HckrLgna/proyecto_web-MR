@@ -14,20 +14,19 @@
 
     <!--    CONTENT    -->
 
-    <form action="" class="formulario" id="formulario">
+    <form action="{{route('informeEducador.update',$informeEducador)}}" method="post" class="formulario" id="formulario">
+    @csrf
+    @method('PUT')
 
-        <!-- Grupo: Beneficiario -->
-        <div class="formulario__grupo" id="grupo__beneficiario">
-            <label for="beneficiario" class="formulario__label">Beneficiario</label>
+
+        <!-- Grupo: Nombre -->
+        <div class="formulario__grupo" id="grupo__nombre">
+            <label for="nombre" class="formulario__label">Nombre Beneficiario</label>
             <div class="formulario__grupo-input">
-                <select class="formulario__input" name="beneficiario" id="beneficiario">
-                    <option value="0" selected>Seleccionar beneficiario</option>
-                    <!-- Listar beneficiarios -->
-                    <option value="1">Jaimito</option>
-                    <option value="2">Carlitos</option>
-                    <!-- *********************** -->
-                </select>
+                <input type="text" class="formulario__input" name="fullname" id="nombre" value="{{$informeEducador->beneficiario->nombre}}"  >
+                <i class="formulario__validacion-estado fas fa-times-circle"></i>
             </div>
+            <p class="formulario__input-error">El nombre tiene que ser de hasta 40 dígitos y solo puede contener letras.</p>
         </div>
 
         <!-- Grupo: Evaluacion -->
@@ -36,9 +35,9 @@
             <div class="formulario__grupo-input">
                 <select class="formulario__input" name="evaluacion" id="evaluacion">
                     <option value="0" selected>Seleccionar evauación</option>
-                    <option value="1">Bueno</option>
-                    <option value="2">Regular</option>
-                    <option value="2">Malo</option>
+                    <option value="100">Bueno</option>
+                    <option value="50">Regular</option>
+                    <option value="10">Malo</option>
                 </select>
             </div>
         </div>
@@ -46,7 +45,7 @@
         <!-- Grupo: Descripcion -->
         <div class="formulario__grupo" id="grupo__descripcion">
             <label for="descripcion" class="formulario__label">Descripción</label>
-            <textarea class="formulario__text-area" name="descripcion" id="descripcion" placeholder="Redacte su evaluación"></textarea>
+            <textarea class="formulario__text-area" name="descripcion" id="descripcion"  >{{$informeEducador->descripcion}}</textarea>
             <p class="formulario__input-error">Rellene correctamente; solo puede contener numeros, letras y guion bajo.</p>
         </div>
 
